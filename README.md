@@ -13,7 +13,7 @@ git clone https://github.com/sebasQuasar/CookListTest.git
 
 ```bash
 cd ios
-bundle pod install
+pod install
 ```
 
 #### Build, start packager and run on iOS:

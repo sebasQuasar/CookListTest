@@ -10,7 +10,9 @@ export const useScrapper = (): ScrapperHookReturn => {
     const getSessionStatus = async () => {
         ScrapperInstance.getSession()
             .then((response) => {
-                !!response?.isAuthenticated && setUrl(ScrapperInstance.constants.ODERS_URL)
+                if (response?.isAuthenticated) {
+                    setUrl(ScrapperInstance.constants.ODERS_URL)
+                }
             })
             .catch((error) => {
                 console.error('Error getting session', error)

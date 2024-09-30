@@ -14,7 +14,7 @@ export const walmartMethods = (): Methods => {
     return {
         async getSession() {
             try {
-                const cookies = await CookieManager.get(walmartConstants.BASE_URL, true)
+                const cookies = await CookieManager.getAll(true)
                 const isAuthenticated = Boolean(cookies['customer'])
                 console.log(`# LOGGED ${isAuthenticated ? 'IN' : 'OUT'} #`)
                 return { isAuthenticated, cookies }
@@ -157,15 +157,20 @@ export const walmartMethods = (): Methods => {
                             console.log('# ORDER DETAILS #')
                             console.log(orderDetail)
                         }
-                        !nextPageCursor && console.log('# END OF ORDER LIST #')
-                      }
+
+                        if (!nextPageCursor) {
+                            console.log('# END OF ORDER LIST #')
+                            break
+                        }
+                    }
                   
                     if (nextPageCursor) {
-                        await new Promise(resolve => setTimeout(resolve, 1000))
+                        await new Promise(resolve => setTimeout(resolve, 5000))
                         this.getOrders(nextPageCursor, configs, commonHeaders, baseUrl)
                     }
                     
                 } catch (err) {
+                    console.error('ERROR?', err)
                     Promise.reject('Error in getOrders')
                 }            
             }

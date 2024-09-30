@@ -68,14 +68,16 @@ export class Scrapper implements Methods {
                 .join('; ')
           
             this.commonHeaders = {
-                'Accept': 'application/json',
+                'accept': 'application/json',
+                'accept-language': 'en-US',
+                'baggage': 'trafficType=customer,deviceType=mobile,renderScope=CSR,webRequestSource=Browser,pageName=yourOrders,isomorphicSessionId=SRpcllOd4qLeyRxEpXIGN',
+                'content-type': 'application/json',
+                'x-o-bu': bu,
                 'x-o-mart': mart,
                 'x-o-platform-version': appVersion,
                 'x-o-platform': 'rweb',
-                'x-o-bu': bu,
                 'x-o-segment': vid,
-                'Content-Type': 'application/json',
-                'Cookie': cookieHeaderValue,
+                'cookie': cookieHeaderValue,
             }
     
             this.baseUrl = `${wmt}`

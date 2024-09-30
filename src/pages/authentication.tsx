@@ -16,6 +16,8 @@ const Authentication: React.FC = () => {
             source={{
                 uri: url,
             }}
+            useWebView2
+            originWhitelist={['*']}
             injectedJavaScript={jsInjection}
             injectedJavaScriptObject={configs}
             onLoad={getSessionStatus}
